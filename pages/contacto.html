@@ -1,1 +1,105 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contacto | Phonekit.cba</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../css/variables.css"><link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/responsive.css"></head><body><header class="site-header"></header><main><section class="contact-hero wrap"><div><h1>Contáctanos</h1><p>Estamos disponibles para ayudarte. Comunícate con nosotros por el<br>medio que prefieras o visítanos en nuestro local.</p></div><div class="circuit"></div></section><section class="contact-main wrap"><div class="contact-list"><article class="contact-box"><strong>▣ &nbsp; WHATSAPP<br><span>+54 351 630-9446</span></strong><span>Lunes a Viernes 09:00 - 18:00 | Sábados 09:00 - 13:00</span><a href="#">Enviar mensaje →</a></article><article class="contact-box"><strong>◎ &nbsp; INSTAGRAM<br><span>@phonekit.cba</span></strong><span>Respondemos tus mensajes directos todos los días</span><a href="#">Visitar perfil →</a></article><article class="contact-box"><strong>f &nbsp; FACEBOOK<br><span>PHONEKIT CBA</span></strong><a href="#">Visitar página →</a></article><article class="contact-box"><strong>✉ &nbsp; EMAIL<br><span>davidlugones09@gmail.com</span></strong><span>Soporte técnico y consultas comerciales</span><a href="mailto:davidlugones09@gmail.com">Enviar correo →</a></article><article class="contact-box"><strong>☎ &nbsp; TELÉFONO<br><span>+54 351 630-9446</span></strong><span>Atención directa en horario comercial</span></article><article class="contact-box"><strong>⌖ &nbsp; DIRECCIÓN<br><span>Plaza Rivadavia, Alta cba</span></strong><span>Córdoba, Argentina · CP 5000</span></article></div><form class="contact-form" id="contact-form"><h2>Envíanos tu consulta</h2><p>Completá el formulario y nuestro equipo te responderá en menos de 24 horas.</p><div class="form-row"><div><label>Nombre *</label><input class="input" required placeholder="Ej. Juan"></div><div><label>Apellido *</label><input class="input" required placeholder="Ej. Pérez"></div></div><label>Correo electrónico *</label><input class="input" type="email" required placeholder="Ej. juan.perez@email.com"><label>Teléfono (opcional)</label><input class="input" type="tel" pattern="[0-9 +()-]{7,}" placeholder="Ej. +54 351 1234567"><label>Asunto *</label><input class="input" required placeholder="Ej. Consulta sobre stock / Garantía"><label>Mensaje *</label><textarea required placeholder="Escribí tu consulta aquí..."></textarea><button class="button" type="submit" style="width:100%;margin-top:13px">Enviar mensaje</button><div class="form-status" id="form-status" role="status"></div></form></section><section class="local"><div class="wrap"><div class="center"><h2>Nuestro Local Físico</h2><p>Vení a conocer nuestra tienda y probá los equipos personalmente</p></div><div class="local-grid"><img class="local-photo" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80" alt="Local Phonekit"><div class="local-info"><h3>PHONEKIT.CBA</h3><strong style="color:var(--cyan)">Plaza Rivadavia, Alta Córdoba</strong><p>Plaza Rivadavia, Alta cba, Córdoba, Argentina, CP 5000</p><h4>HORARIOS DE ATENCIÓN PRESENCIAL</h4><p>Viernes, Sábado y Domingo: 15:00 - 21:30 hs<br>Lunes a Jueves: Solo retiros coordinados online</p><div class="benefits"><span>▣ Retiro de compra</span><span>♢ Garantía presente</span><span>▭ Todos los medios</span><span>▣ Asesoramiento</span><span>◉ Fácil acceso</span><span>♢ Entorno seguro</span></div></div></div><div class="map">⌖</div><a class="button map-button" href="https://maps.google.com/?q=Plaza+Rivadavia+Alta+Córdoba" target="_blank">Cómo llegar al local</a></div></section><section class="follow"><div class="wrap"><div class="center"><h2>Seguinos en redes</h2><p>Formá parte de nuestra comunidad tecnológica y enterate de los sorteos y lanzamientos</p></div><div class="social-grid"><div class="social-card">◎<br>Instagram<span>@phonekit.cba</span></div><div class="social-card">▣<br>WhatsApp<span>+54 351 630-9446</span></div><div class="social-card">f<br>Facebook<span>PHONEKIT CBA</span></div><div class="social-card">▯<br>TikTok<span>@phonekit.cba</span></div><div class="social-card">▷<br>YouTube<span>PHONEKIT CBA</span></div></div></div></section></main><footer class="site-footer"></footer><script src="../js/navbar.js"></script><script>document.querySelector('#contact-form').onsubmit=e=>{e.preventDefault();document.querySelector('#form-status').textContent='¡Gracias! Tu mensaje fue enviado correctamente.';e.target.reset()}</script></body></html>
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Contacto | Phonekit.cba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+    <header class="site-header"></header>
+    <main>
+        <section class="contact-hero wrap">
+            <div>
+                <h1>Contáctanos</h1>
+                <p>Estamos disponibles para ayudarte. Comunícate con nosotros por el<br>medio que prefieras o visítanos
+                    en nuestro local.</p>
+            </div>
+            <div class="circuit"></div>
+        </section>
+        <section class="contact-main wrap">
+            <div class="contact-list">
+                <article class="contact-box"><strong>▣ &nbsp; WHATSAPP<br><span>+54 351
+                            630-9446</span></strong><span>Lunes a Viernes 09:00 - 18:00 | Sábados 09:00 - 13:00</span><a
+                        href="https://wa.me/5493516309446" target="_blank" rel="noopener noreferrer">Enviar mensaje →</a></article>
+                <article class="contact-box"><strong>◎ &nbsp;
+                        INSTAGRAM<br><span>@phonekit.cba</span></strong><span>Respondemos tus mensajes directos todos
+                        los días</span><a href="https://www.instagram.com/phonekit.cba/" target="_blank" rel="noopener noreferrer">Visitar perfil →</a></article>
+                <article class="contact-box"><strong>✉ &nbsp;
+                        EMAIL<br><span>davidlugones09@gmail.com</span></strong><span>Soporte técnico y consultas
+                        comerciales</span><a href="mailto:davidlugones09@gmail.com">Enviar correo →</a></article>
+                <article class="contact-box"><strong>☎ &nbsp; TELÉFONO<br><span>+54 351
+                            630-9446</span></strong><span>Atención directa en horario comercial</span></article>
+                <article class="contact-box"><strong>⌖ &nbsp; DIRECCIÓN<br><span>Plaza Rivadavia, Alta
+                            cba</span></strong><span>Córdoba, Argentina · CP 5000</span></article>
+            </div>
+            <form class="contact-form" id="contact-form">
+                <h2>Envíanos tu consulta</h2>
+                <p>Completá el formulario y nuestro equipo te responderá en menos de 24 horas.</p>
+                <div class="form-row">
+                    <div><label>Nombre *</label><input class="input" required placeholder="Ej. Juan"></div>
+                    <div><label>Apellido *</label><input class="input" required placeholder="Ej. Pérez"></div>
+                </div><label>Correo electrónico *</label><input class="input" type="email" required
+                    placeholder="Ej. juan.perez@email.com"><label>Teléfono (opcional)</label><input class="input"
+                    type="tel" pattern="[0-9 +()-]{7,}" placeholder="Ej. +54 351 1234567"><label>Asunto *</label><input
+                    class="input" required placeholder="Ej. Consulta sobre stock / Garantía"><label>Mensaje
+                    *</label><textarea required placeholder="Escribí tu consulta aquí..."></textarea><button
+                    class="button" type="submit" style="width:100%;margin-top:13px">Enviar mensaje</button>
+                <div class="form-status" id="form-status" role="status"></div>
+            </form>
+        </section>
+        <section class="local">
+            <div class="wrap">
+                <div class="center">
+                    <h2>Nuestro Local Físico</h2>
+                    <p>Vení a conocer nuestra tienda y probá los equipos personalmente</p>
+                </div>
+                <div class="local-grid"><img class="local-photo"
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
+                        alt="Local Phonekit">
+                    <div class="local-info">
+                        <h3>PHONEKIT.CBA</h3><strong style="color:var(--cyan)">Plaza Rivadavia, Alta Córdoba</strong>
+                        <p>Plaza Rivadavia, Alta cba, Córdoba, Argentina, CP 5000</p>
+                        <h4>HORARIOS DE ATENCIÓN PRESENCIAL</h4>
+                        <p>Viernes, Sábado y Domingo: 15:00 - 21:30 hs<br>Lunes a Jueves: Solo retiros coordinados
+                            online</p>
+                        <div class="benefits"><span>▣ Retiro de compra</span><span>♢ Garantía presente</span><span>▭
+                                Todos los medios</span><span>▣ Asesoramiento</span><span>◉ Fácil acceso</span><span>♢
+                                Entorno seguro</span></div>
+                    </div>
+                </div>
+                <div class="map">⌖</div><a class="button map-button"
+                    href="https://maps.google.com/?q=Plaza+Rivadavia+Alta+Córdoba" target="_blank">Cómo llegar al
+                    local</a>
+            </div>
+        </section>
+        <section class="follow">
+            <div class="wrap">
+                <div class="center">
+                    <h2>Seguinos en redes</h2>
+                    <p>Formá parte de nuestra comunidad tecnológica y enterate de los sorteos y lanzamientos</p>
+                </div>
+                <div class="social-grid">
+                    <div class="social-card">◎<br>Instagram<span>@phonekit.cba</span></div>
+                    <div class="social-card">▣<br>WhatsApp<span>+54 351 630-9446</span></div>
+                    <div class="social-card">▯<br>TikTok<span>@phonekit.cba</span></div>
+                    <div class="social-card">▷<br>YouTube<span>PHONEKIT CBA</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer"></footer>
+    <script src="../js/navbar.js"></script>
+    <script>document.querySelector('#contact-form').onsubmit = e => { e.preventDefault(); document.querySelector('#form-status').textContent = '¡Gracias! Tu mensaje fue enviado correctamente.'; e.target.reset() }</script>
+</body>
+
+</html>
