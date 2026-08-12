@@ -65,6 +65,14 @@ img {
     font: 13px var(--sans)
 }
 
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
 .nav-links {
     margin: auto;
     display: flex;

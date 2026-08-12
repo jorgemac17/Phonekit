@@ -10,11 +10,12 @@ const indexHref = isInPages ? '../index.html' : 'index.html';
 const productosHref = isInPages ? 'productos.html' : 'pages/productos.html';
 const contactoHref = isInPages ? 'contacto.html' : 'pages/contacto.html';
 const carritoHref = isInPages ? 'carrito.html' : 'pages/carrito.html';
+const logoSrc = isInPages ? '../images/logo chila proyect.jpeg' : 'images/logo chila proyect.jpeg';
 
 document.querySelectorAll('.site-header').forEach(h => {
 	h.innerHTML = `
 	<nav class="nav">
-		<a class="brand" href="${indexHref}"><span class="brand-mark">▣</span>PHONEKIT.CBA</a>
+		<a class="brand" href="${indexHref}"><img class="brand-logo" src="${logoSrc}" alt="PHONEKIT logo"><span class="brand-text">PHONEKIT.CBA</span></a>
 		<div class="nav-links">
 			<a class="${!active ? 'active' : ''}" href="${indexHref}">Inicio</a>
 			<a class="${active === 'productos' ? 'active' : ''}" href="${productosHref}">Productos</a>
