@@ -38,20 +38,20 @@
                 data-category="Accesorios">Accesorios</button></div>
         <section class="catalog">
             <aside class="filters">
-                <h3>Filtros <a href="#" style="float:right;color:var(--cyan);font-size:10px">Limpiar todo</a></h3>
-                <div class="filter-title">CATEGORÍA</div><label class="filter-item"><input type="checkbox">
-                    Fundas</label><label class="filter-item"><input type="checkbox"> Celulares</label><label
-                    class="filter-item"><input type="checkbox"> Smartwatch</label><label class="filter-item"><input
-                        type="checkbox"> Tablets</label><label class="filter-item"><input type="checkbox">
+                <h3>Filtros <a href="#" id="clear-filters" style="float:right;color:var(--cyan);font-size:10px">Limpiar todo</a></h3>
+                <div class="filter-title">CATEGORÍA</div><label class="filter-item"><input type="checkbox" name="category" value="Fundas">
+                    Fundas</label><label class="filter-item"><input type="checkbox" name="category" value="Celulares"> Celulares</label><label
+                    class="filter-item"><input type="checkbox" name="category" value="Smartwatch"> Smartwatch</label><label class="filter-item"><input
+                        type="checkbox" name="category" value="Tablets"> Tablets</label><label class="filter-item"><input type="checkbox" name="category" value="Auriculares">
                     Auriculares</label>
-                <div class="filter-title">MARCA</div><label class="filter-item"><input type="checkbox">
-                    Apple</label><label class="filter-item"><input type="checkbox"> Samsung</label><label
-                    class="filter-item"><input type="checkbox"> Motorola</label><label class="filter-item"><input
-                        type="checkbox"> Xiaomi</label>
+                <div class="filter-title">MARCA</div><label class="filter-item"><input type="checkbox" name="brand" value="Apple">
+                    Apple</label><label class="filter-item"><input type="checkbox" name="brand" value="Samsung"> Samsung</label><label
+                    class="filter-item"><input type="checkbox" name="brand" value="Motorola"> Motorola</label><label class="filter-item"><input
+                        type="checkbox" name="brand" value="Xiaomi"> Xiaomi</label>
                 <div class="filter-title">PRECIO</div>
-                <div style="display:flex;gap:5px"><input class="input" placeholder="Min" style="padding:6px"><input
-                        class="input" placeholder="Max" style="padding:6px"></div><button
-                    class="button filter-button">Aplicar filtros</button>
+                <div style="display:flex;gap:5px"><input class="input" id="price-min" placeholder="Min" style="padding:6px"><input
+                        class="input" id="price-max" placeholder="Max" style="padding:6px"></div><button
+                    class="button filter-button" id="apply-filters">Aplicar filtros</button>
             </aside>
             <div class="product-grid" id="catalog-grid"></div>
             <div class="pagination"><button>←</button><button
@@ -63,7 +63,116 @@
     <script src="../js/productos.js"></script>
     <script src="../js/navbar.js"></script>
     <script src="../js/carrito.js"></script>
-    <script>let category = new URLSearchParams(location.search).get('categoria') || ''; const draw = () => { let q = document.querySelector('#search').value.toLowerCase(), a = products.filter(p => (!category || p.category === category) && p.name.toLowerCase().includes(q)); let s = document.querySelector('#sort').value; if (s) a.sort((x, y) => s === 'asc' ? x.price - y.price : y.price - x.price); document.querySelector('#catalog-grid').innerHTML = a.map(p => card(p, true)).join('') }; document.querySelector('#search').oninput = draw; document.querySelector('#sort').onchange = draw; document.querySelectorAll('[data-category]').forEach(b => b.onclick = () => { category = b.dataset.category; document.querySelectorAll('.chip').forEach(x => x.classList.remove('active')); b.classList.add('active'); draw() }); draw()</script>
+    <script>
+        let category = new URLSearchParams(location.search).get('categoria') || '';
+        let selectedCategories = [];
+        let selectedBrands = [];
+        let minPrice = null;
+        let maxPrice = null;
+
+        const draw = () => {
+            let q = document.querySelector('#search').value.toLowerCase();
+            
+            let filtered = products.filter(p => {
+                // Filtro de búsqueda
+                if (q && !p.name.toLowerCase().includes(q)) return false;
+                
+                // Filtro de categoría desde chips
+                if (category && p.category !== category) return false;
+                
+                // Filtro de categorías desde checkboxes
+                if (selectedCategories.length > 0 && !selectedCategories.includes(p.category)) return false;
+                
+                // Filtro de marcas
+                if (selectedBrands.length > 0 && !selectedBrands.includes(p.brand)) return false;
+                
+                // Filtro de precio
+                if (minPrice !== null && p.price < minPrice) return false;
+                if (maxPrice !== null && p.price > maxPrice) return false;
+                
+                return true;
+            });
+            
+            // Ordenamiento
+            let s = document.querySelector('#sort').value;
+            if (s) filtered.sort((x, y) => s === 'asc' ? x.price - y.price : y.price - x.price);
+            
+            document.querySelector('#catalog-grid').innerHTML = filtered.map(p => card(p, true)).join('');
+        };
+        
+        // Evento de búsqueda
+        document.querySelector('#search').oninput = draw;
+        
+        // Evento de ordenamiento
+        document.querySelector('#sort').onchange = draw;
+        
+        // Chips de categoría
+        document.querySelectorAll('[data-category]').forEach(b => b.onclick = (e) => {
+            e.preventDefault();
+            category = b.dataset.category;
+            document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+            b.classList.add('active');
+            draw();
+        });
+        
+        // Botón Aplicar filtros
+        document.querySelector('#apply-filters').onclick = (e) => {
+            e.preventDefault();
+            
+            // Limpiar selecciones previas
+            selectedCategories = [];
+            selectedBrands = [];
+            
+            // Obtener categorías seleccionadas
+            document.querySelectorAll('input[name="category"]:checked').forEach(cb => {
+                selectedCategories.push(cb.value);
+            });
+            
+            // Obtener marcas seleccionadas
+            document.querySelectorAll('input[name="brand"]:checked').forEach(cb => {
+                selectedBrands.push(cb.value);
+            });
+            
+            // Obtener rango de precio
+            const priceMinInput = document.querySelector('#price-min').value;
+            const priceMaxInput = document.querySelector('#price-max').value;
+            
+            minPrice = priceMinInput ? parseFloat(priceMinInput) : null;
+            maxPrice = priceMaxInput ? parseFloat(priceMaxInput) : null;
+            
+            draw();
+        };
+        
+        // Limpiar todos los filtros
+        document.querySelector('#clear-filters').onclick = (e) => {
+            e.preventDefault();
+            
+            // Limpiar checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            
+            // Limpiar inputs de precio
+            document.querySelector('#price-min').value = '';
+            document.querySelector('#price-max').value = '';
+            
+            // Resetear variables
+            category = '';
+            selectedCategories = [];
+            selectedBrands = [];
+            minPrice = null;
+            maxPrice = null;
+            
+            // Resetear chips
+            document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+            document.querySelectorAll('[data-category=""]')[0].classList.add('active');
+            
+            // Limpiar búsqueda
+            document.querySelector('#search').value = '';
+            
+            draw();
+        };
+        
+        draw();
+    </script>
 </body>
 
 </html>
